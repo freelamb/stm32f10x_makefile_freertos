@@ -1,6 +1,6 @@
 
 # STD Defines
-DDEFS += -DSTM32F10X_MD_VL -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000
+DDEFS += -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000
 
 # source director
 STM32F1_STD_LIB     = $(LIB_DIR)/STM32F10x_StdPeriph_Driver
@@ -10,7 +10,7 @@ STM32F1_SRC_DIR     = $(STM32F1_STD_LIB)/src
 STM32F1_INC_DIR     = $(STM32F1_STD_LIB)/inc
 
 # startup
-ASM_SRC  += $(STM32F1_DEVICE_DIR)/startup/gcc_ride7/startup_stm32f10x_md_vl.s
+ASM_SRC  += $(STM32F1_DEVICE_DIR)/startup/gcc_ride7/startup_stm32f10x_md.s
 
 # CMSIS
 SRC  += $(STM32F1_DEVICE_DIR)/system_stm32f10x.c

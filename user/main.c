@@ -4,6 +4,8 @@
 
 #include "stm32f10x.h"
 #include "stm32f10x_conf.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 void Delay(__IO uint32_t nCount)
 {
@@ -26,17 +28,39 @@ void GPIO_Configuration(void)
     GPIO_Init(GPIOB, &GPIO_InitStructure);
 }
 
-int main() {
-
-    RCC_Configuration();
-    GPIO_Configuration();
-
-    while(1) {
+void vTaskFunction(void * pvParameters)
+{
+    for (; ;) {
         GPIO_ResetBits(GPIOB, GPIO_Pin_11);
         Delay(1000000);
         GPIO_SetBits(GPIOB, GPIO_Pin_11);
         Delay(1000000);
     }
+}
+
+int main()
+{
+    // init uart log
+    uart_log_init();
+
+    RCC_Configuration();
+    GPIO_Configuration();
+
+    const char* pcTextForTask1 = "Task1 is running\r\n";
+
+//    while(1) {
+//        GPIO_ResetBits(GPIOB, GPIO_Pin_11);
+//        Delay(1000000);
+//        GPIO_SetBits(GPIOB, GPIO_Pin_11);
+//        Delay(1000000);
+//        Log("dage, %d", 6);
+//    }
+
+    xTaskCreate(vTaskFunction, "Task 1", 1000, (void*)pcTextForTask1, 1, NULL);
+
+    vTaskStartScheduler();
+
+    while (1);
 
     return 0;
 }
