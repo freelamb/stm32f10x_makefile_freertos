@@ -6,6 +6,7 @@ Working GNU ARM GCC (https://launchpad.net/gcc-arm-embedded)
 
 Texane stlink to flash the STM32F10x (https://github.com/texane/stlink)
 
+FreeRTOS Source (http://www.freertos.org)
 
 ## Usage
 
@@ -27,5 +28,5 @@ Texane stlink to flash the STM32F10x (https://github.com/texane/stlink)
 
 mcu: STM32F103C8T6
 
-GPIOB6--Led
+GPIOB11--Led
 
