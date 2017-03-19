@@ -1,4 +1,6 @@
-#STM32 Makefile Template
+# STM32 Makefile FreeRTOS
+
+[![Build Status](https://travis-ci.org/runmec/stm32f10x_makefile_freertos.svg?branch=master)](https://travis-ci.org/runmec/stm32f10x_makefile_freertos)
 
 ## Requirement
 

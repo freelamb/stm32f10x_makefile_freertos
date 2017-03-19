@@ -1,0 +1,17 @@
+language: c
+dist: trusty
+
+sudo: required
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y gcc-arm-none-eabi
+
+compiler:
+  - arm-none-eabi-gcc
+
+script:
+  - make
+
+notifications:
+  email: true
