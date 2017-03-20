@@ -97,5 +97,5 @@ clean:
 	-rm -rf $(PROJECT_NAME).hex
 	-rm -rf $(PROJECT_NAME).bin
 	-rm -rf $(SRC:.c=.lst)
-	-rm -rf $(ASRC:.s=.lst)
+	-rm -rf $(ASM_SRC:.s=.lst)
 
