@@ -6,7 +6,7 @@
 #include "stm32f10x_conf.h"
 #include "FreeRTOS.h"
 #include "task.h"
-//#include "uart_log.h"
+#include "uart_log.h"
 
 void Delay(__IO uint32_t nCount)
 {
@@ -31,7 +31,7 @@ void GPIO_Configuration(void)
 
 void vTaskFunction(void * pvParameters)
 {
-    //Log("task 1");
+    log("start task");
     for (; ;) {
         GPIO_ResetBits(GPIOB, GPIO_Pin_11);
         Delay(1000000);
@@ -43,7 +43,7 @@ void vTaskFunction(void * pvParameters)
 int main()
 {
     // init uart log
-    //uart_log_init();
+    uart_log_init();
 
     RCC_Configuration();
     GPIO_Configuration();
