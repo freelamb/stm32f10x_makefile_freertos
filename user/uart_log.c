@@ -39,24 +39,10 @@ void uart_log_init(void)
     USART_Cmd(USART2, ENABLE);
 }
 
-void putchar(unsigned short int data)
-{
-    while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
-    USART_SendData(USART2, data);
-}
-
 static void printchar(char **str, unsigned int c)
 {
-//    extern int putchar(int c);
-//
-//    if (str) {
-//        **str = c;
-//        ++(*str);
-//    }
-//    else (void)putchar(c);
-
     while (USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
-    USART_SendData(USART2, c);
+    USART_SendData(USART2, (uint16_t)c);
 }
 
 #define PAD_RIGHT 1
@@ -210,7 +196,7 @@ int printf(const char *format, ...)
     return print( 0, format, args );
 }
 
-void log(const char *format, ...)
+void debug(const char *format, ...)
 {
     va_list args;
 
@@ -242,10 +228,10 @@ int snprintf( char *buf, unsigned int count, const char *format, ... )
 void USART2_IRQHandler(void)
 {
     uint8_t data;
-    if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
+    if (USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
     {
         data = USART_ReceiveData(USART2);
-
+        // add usart receive here
         // uart_receive_input(data);
 
         USART_ClearFlag(USART2, USART_FLAG_RXNE);

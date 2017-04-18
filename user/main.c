@@ -31,7 +31,7 @@ void GPIO_Configuration(void)
 
 void vTaskFunction(void * pvParameters)
 {
-    log("start task");
+    debug("start task");
     for (; ;) {
         GPIO_ResetBits(GPIOB, GPIO_Pin_11);
         Delay(1000000);
@@ -48,7 +48,7 @@ int main()
     RCC_Configuration();
     GPIO_Configuration();
 
-    //Log("start main");
+    debug("start main");
     const char* pcTextForTask1 = "Task1 is running\r\n";
 
 

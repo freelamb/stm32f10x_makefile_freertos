@@ -9,6 +9,6 @@
 
 void uart_log_init(void);
 
-void log(const char *format, ...);
+void debug(const char *format, ...);
 
 #endif //STM32F10X_MAKEFILE_FREERTOS_UART_LOG_H
