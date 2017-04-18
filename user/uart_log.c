@@ -3,7 +3,6 @@
 //
 
 #include "uart_log.h"
-#include <stdarg.h>
 #include "stm32f10x.h"
 #include "stm32f10x_conf.h"
 
