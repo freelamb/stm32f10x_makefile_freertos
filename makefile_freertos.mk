@@ -13,7 +13,7 @@ SRC  += $(FREERTOS_SRC_DIR)/tasks.c
 
 SRC  += $(FREERTOS_ARM_CM3_DIR)/port.c
 
-SRC  += $(FREERTOS_MemMang_DIR)/heap_2.c
+SRC  += $(FREERTOS_MemMang_DIR)/heap_4.c
 
 # include directories
 INCLUDE_DIRS += $(FREERTOS_INC_DIR)
