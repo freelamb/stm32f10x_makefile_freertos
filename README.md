@@ -26,6 +26,9 @@ FreeRTOS Source (http://www.freertos.org)
 ### erase flash
 ```$ make erase```
 
+### download main.bin to mcu
+``` $ ./build.sh```
+
 ## Example
 
 mcu: STM32F103C8T6
