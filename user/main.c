@@ -32,11 +32,11 @@ void GPIO_Configuration(void)
 void vTaskFunction(void * pvParameters)
 {
     debug("start task");
-    for (; ;) {
+    while (1) {
         GPIO_ResetBits(GPIOB, GPIO_Pin_11);
-        Delay(1000000);
+        vTaskDelay(1000);
         GPIO_SetBits(GPIOB, GPIO_Pin_11);
-        Delay(1000000);
+        vTaskDelay(1000);
     }
 }
 
@@ -52,7 +52,7 @@ int main()
     const char* pcTextForTask1 = "Task1 is running\r\n";
 
 
-    xTaskCreate(vTaskFunction, "Task 1", 1000, (void*)pcTextForTask1, 1, NULL);
+    xTaskCreate(vTaskFunction, "Task 1", 16, (void*)pcTextForTask1, 1, NULL);
 
     vTaskStartScheduler();
 

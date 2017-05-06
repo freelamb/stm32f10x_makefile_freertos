@@ -10,6 +10,9 @@ BIN          = $(CP) -O binary -S
 # define mcu, specify the target processor
 MCU          = cortex-m3
 
+# all the files will be generated with this name (main.elf, main.bin, main.hex, etc)
+PROJECT_NAME=stm32f10x_makefile_freertos
+
 # define root dir
 ROOT_DIR     = .
 
@@ -17,13 +20,13 @@ ROOT_DIR     = .
 INCLUDE_DIRS =
 
 # define bin dir
-BIN_DIR      = $(ROOT_DIR)/bin
+BIN_DIR      = $(ROOT_DIR)
 
 # define lib dir
-LIB_DIR      = $(ROOT_DIR)/Libraries
+STM32F10x_LIB_DIR      = $(ROOT_DIR)/stm32f10x_lib
 
 # define freertos dir
-FREERTOS_DIR = $(ROOT_DIR)/FreeRTOS
+FREERTOS_DIR = $(ROOT_DIR)/freertos
 
 # define user dir
 USER_DIR     = $(ROOT_DIR)/user
@@ -60,9 +63,6 @@ AS_FLAGS = $(MC_FLAGS) -g -gdwarf-2 -mthumb  -Wa,-amhls=$(<:.s=.lst)
 CP_FLAGS = $(MC_FLAGS) $(OPT) -g -gdwarf-2 -mthumb -fomit-frame-pointer -Wall -fverbose-asm -Wa,-ahlms=$(<:.c=.lst) $(DEFS)
 LD_FLAGS = $(MC_FLAGS) -g -gdwarf-2 -mthumb -nostartfiles -Xlinker --gc-sections -T$(LINK_SCRIPT) -Wl,-Map=$(PROJECT_NAME).map,--cref,--no-warn-mismatch $(LIBDIR) $(LIB)
 
-# all the files will be generated with this name (main.elf, main.bin, main.hex, etc)
-PROJECT_NAME=$(BIN_DIR)/main
-
 #
 # makefile rules
 #
@@ -84,8 +84,8 @@ all: $(OBJECTS) $(PROJECT_NAME).elf  $(PROJECT_NAME).hex $(PROJECT_NAME).bin
 %bin: %elf
 	$(BIN)  $< $@
 
-flash: $(PROJECT).bin
-	st-flash write $(PROJECT).bin 0x8000000
+flash: $(PROJECT_NAME).bin
+	st-flash write $(PROJECT_NAME).bin 0x8000000
 
 erase:
 	st-flash erase

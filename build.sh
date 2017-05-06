@@ -3,5 +3,5 @@
 make clean
 make
 st-flash erase
-st-flash --reset write ./bin/main.bin 0x8000000
+st-flash --reset write ./*.bin 0x8000000
 
