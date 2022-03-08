@@ -72,7 +72,7 @@ Reading symbols from z2_cmcc_b_app.elf...done.
 
 Clion configure debug reference
 
-http://www.jianshu.com/p/4635a2380698
+https://www.yuque.com/freelamb/iot_tech/aezu7s
 
 ## Example
 
